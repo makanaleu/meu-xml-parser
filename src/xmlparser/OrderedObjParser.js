@@ -76,32 +76,33 @@ function addExternalEntities(externalEntities){
  * @param {boolean} escapeEntities
  */
 function parseTextData(val, tagName, jPath, dontTrim, hasAttributes, isLeafNode, escapeEntities) {
-  if (val !== undefined) {
-    if (this.options.trimValues && !dontTrim) {
-      val = val.trim();
-    }
-    if(val.length > 0){
-      if(!escapeEntities) val = this.replaceEntitiesValue(val);
+  // if (val !== undefined) {
+  //   if (this.options.trimValues && !dontTrim) {
+  //     val = val.trim();
+  //   }
+  //   if(val.length > 0){
+  //     if(!escapeEntities) val = this.replaceEntitiesValue(val);
       
-      const newval = this.options.tagValueProcessor(tagName, val, jPath, hasAttributes, isLeafNode);
-      if(newval === null || newval === undefined){
-        //don't parse
-        return val;
-      }else if(typeof newval !== typeof val || newval !== val){
-        //overwrite
-        return newval;
-      }else if(this.options.trimValues){
-        return parseValue(val, this.options.parseTagValue, this.options.numberParseOptions);
-      }else{
-        const trimmedVal = val.trim();
-        if(trimmedVal === val){
-          return parseValue(val, this.options.parseTagValue, this.options.numberParseOptions);
-        }else{
-          return val;
-        }
-      }
-    }
-  }
+  //     const newval = this.options.tagValueProcessor(tagName, val, jPath, hasAttributes, isLeafNode);
+  //     if(newval === null || newval === undefined){
+  //       //don't parse
+  //       return val;
+  //     }else if(typeof newval !== typeof val || newval !== val){
+  //       //overwrite
+  //       return newval;
+  //     }else if(this.options.trimValues){
+  //       return parseValue(val, this.options.parseTagValue, this.options.numberParseOptions);
+  //     }else{
+  //       const trimmedVal = val.trim();
+  //       if(trimmedVal === val){
+  //         return parseValue(val, this.options.parseTagValue, this.options.numberParseOptions);
+  //       }else{
+  //         return val;
+  //       }
+  //     }
+  //   }
+  // }
+  return val.trim();
 }
 
 function resolveNameSpace(tagname) {
